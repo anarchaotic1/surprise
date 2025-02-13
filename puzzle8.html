@@ -44,21 +44,30 @@
   <div class="container">
     <h1>Puzzle 8</h1>
     <p>In Interstellar, what is the name of this planet?</p>
-    <button onclick="checkAnswer('Earth')">Earth</button>
-    <button onclick="checkAnswer('Mann\'s Planet')">Mann's Planet</button>
-    <button onclick="checkAnswer('Miller\'s Planet')">Miller's Planet</button>
-    <button onclick="checkAnswer('Gargantua')">Gargantua</button>
+    <form id="quizForm">
+      <input type="radio" name="answer" value="Earth"> Earth<br>
+      <input type="radio" name="answer" value="Mann's Planet"> Mann's Planet<br>
+      <input type="radio" name="answer" value="Miller's Planet"> Miller's Planet<br>
+      <input type="radio" name="answer" value="Gargantua"> Gargantua<br>
+      <br>
+      <button type="button" onclick="checkAnswer()">Submit</button>
+    </form>
     <p id="feedback"></p>
     <img src="https://raw.githubusercontent.com/anarchaotic1/surprise/main/9.jpg" alt="Puzzle Image">
   </div>
 
   <script>
-    function checkAnswer(answer) {
-      if (answer === "Miller's Planet") {
-        document.getElementById("feedback").textContent = "Correct! Proceeding to the next puzzle...";
-        setTimeout(() => { window.location.href = 'puzzle9.html'; }, 2000);
+    function checkAnswer() {
+      const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+      if (selectedAnswer) {
+        if (selectedAnswer.value === "Miller's Planet") {
+          document.getElementById("feedback").textContent = "Correct! Moving to the next puzzle...";
+          setTimeout(() => { window.location.href = 'puzzle9.html'; }, 2000);
+        } else {
+          document.getElementById("feedback").textContent = "Nope! Try again.";
+        }
       } else {
-        document.getElementById("feedback").textContent = "Nope! Try again.";
+        document.getElementById("feedback").textContent = "Please select an answer.";
       }
     }
   </script>
