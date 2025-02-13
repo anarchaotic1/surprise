@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Final Puzzle</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            margin: 20px;
+        }
+        input, button {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>So cute, who dis baby? :)</h2>
+    <img src="10.jpg" alt="Cute Baby">
+    <br>
+    <input type="text" id="answer" placeholder="Enter name">
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="message"></p>
+    
+    <script>
+        function checkAnswer() {
+            let userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+            let correctAnswers = ["gubbi", "labunya", "labuuu", "lavanya"];
+            
+            if (correctAnswers.includes(userAnswer)) {
+                window.location.href = "puzzle10.html";
+            } else {
+                document.getElementById("message").innerText = "Try again!";
+            }
+        }
+    </script>
+</body>
+</html>
