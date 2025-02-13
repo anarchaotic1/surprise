@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle 2</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #ffebee;
+      color: #c62828;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+    button {
+      background-color: #c62828;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #b71c1c;
+    }
+    img {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Puzzle 2</h1>
+    <p>How cold is it in this picture?</p>
+    <form id="quizForm">
+      <label><input type="radio" name="answer" value="200 C"> 200 C</label><br>
+      <label><input type="radio" name="answer" value="0 K"> 0 K</label><br>
+      <label><input type="radio" name="answer" value="20000 F"> 20000 F</label><br>
+      <label><input type="radio" name="answer" value="-7 C"> -7 C</label><br>
+      <button type="button" onclick="checkAnswer()">Submit</button>
+    </form>
+    <p id="feedback"></p>
+    <img src="Photos/SubFolder/1.jpg" alt="Puzzle Image" onerror="this.onerror=null; this.src='placeholder.jpg';">
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const answers = document.getElementsByName('answer');
+      let selectedAnswer;
+      for (const answer of answers) {
+        if (answer.checked) {
+          selectedAnswer = answer.value;
+          break;
+        }
+      }
+      
+      if (!selectedAnswer) {
+        document.getElementById('feedback').textContent = "Please select an answer!";
+        return;
+      }
+      
+      if (selectedAnswer === "-7 C") {
+        document.getElementById('feedback').textContent = "Correct! Proceeding to the next puzzle...";
+        setTimeout(() => {
+          window.location.href = 'puzzle3.html';
+        }, 2000);
+      } else {
+        document.getElementById('feedback').textContent = "Oops! Try again.";
+      }
+    }
+  </script>
+</body>
+</html>

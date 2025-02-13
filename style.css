@@ -1,0 +1,13 @@
+body {
+  font-size: 18px; /* Larger text for mobile */
+}
+
+.container {
+  width: 90%; /* Make the container responsive */
+  margin: 0 auto; /* Center the container */
+}
+
+img {
+  max-width: 100%; /* Make images responsive */
+  height: auto;
+}
