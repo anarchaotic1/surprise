@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle 4</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #ffebee;
+      color: #c62828;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+    button {
+      background-color: #c62828;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #b71c1c;
+    }
+    img {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Puzzle 6</h1>
+    <p>Henlo, what is the name of this cat :D</p>
+    <form id="quizForm">
+      <label>Fill in the blanks: <input type="text" id="answer" placeholder="Enter your answer"></label><br>
+      <button type="button" onclick="checkAnswer()">Submit</button>
+    </form>
+    <p id="feedback"></p>
+    <img src="https://raw.githubusercontent.com/anarchaotic1/surprise/main/5.png" alt="Puzzle Image">
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const answer = document.getElementById('answer').value.trim().toLowerCase();
+      
+      if (!answer) {
+        document.getElementById('feedback').textContent = "Please enter an answer!";
+        return;
+      }
+      
+      if (answer === "fibo" || answer === "fibonacci") {
+        document.getElementById('feedback').textContent = "Correct! Proceeding to the next puzzle...";
+        setTimeout(() => {
+          window.location.href = 'puzzle7.html';
+        }, 2000);
+      } else {
+        document.getElementById('feedback').textContent = "Oops! Try again.";
+      }
+    }
+  </script>
+</body>
+</html>

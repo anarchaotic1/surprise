@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle 7</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #ffebee;
+      color: #c62828;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+    button {
+      background-color: #c62828;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #b71c1c;
+    }
+    img {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+    .target {
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Puzzle 9</h1>
+    <p>Omgosh, why does you shoot me 0_0</p>
+    <p>Shoot down all targets to proceed!</p>
+    <button onclick="shootGun()">Shoot</button>
+    <p id="feedback"></p>
+    <img src="https://raw.githubusercontent.com/anarchaotic1/surprise/main/7.png" alt="Puzzle Image">
+    <div id="gameArea" style="position:relative; width:100%; height:300px; margin-top:20px;"></div>
+  </div>
+
+  <script>
+    let targetsLeft = 8;
+    const heartShape = [
+      [50, 20, 40], [70, 20, 40],
+      [30, 50, 30], [50, 60, 30], [70, 50, 30],
+      [40, 80, 20], [60, 80, 20],
+      [50, 100, 25]
+    ];
+
+    function createTargets() {
+      const gameArea = document.getElementById("gameArea");
+      gameArea.innerHTML = "";
+      heartShape.forEach(pos => {
+        let target = document.createElement("div");
+        target.className = "target";
+        target.style.width = pos[2] + "px";
+        target.style.height = pos[2] + "px";
+        target.style.top = pos[1] + "px";
+        target.style.left = pos[0] + "%";
+        gameArea.appendChild(target);
+      });
+    }
+
+    function shootGun() {
+      const targets = document.querySelectorAll(".target");
+      if (targets.length > 0) {
+        targets[0].remove();
+        targetsLeft--;
+        if (targetsLeft === 0) {
+          document.getElementById("feedback").textContent = "All targets down! Proceeding...";
+          setTimeout(() => { window.location.href = 'puzzle10.html'; }, 2000);
+        }
+      }
+    }
+
+    createTargets();
+  </script>
+</body>
+</html>
