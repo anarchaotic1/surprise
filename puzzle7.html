@@ -3,48 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puzzle 7</title>
+    <title>Pre-Final Puzzle</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            margin: 20px;
+        }
+        input, button {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>So cute, who dis baby? :)</h2>
+    <img src="10.jpg" alt="Cute Baby">
+    <br>
+    <input type="text" id="answer" placeholder="Enter name">
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="message"></p>
+    
     <script>
         function checkAnswer() {
-            const answers = document.getElementsByName('answer');
-            let selectedAnswer = "";
-            for (const answer of answers) {
-                if (answer.checked) {
-                    selectedAnswer = answer.value;
-                    break;
-                }
-            }
+            let userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+            let correctAnswers = ["gubbi", "labunya", "labuuu", "lavanya"];
             
-            if (!selectedAnswer) {
-                document.getElementById('feedback').textContent = "Please select an answer!";
-                return;
-            }
-
-            console.log("Selected Answer:", selectedAnswer); // Debugging
-
-            if (selectedAnswer === "2 cm") {
-                document.getElementById('feedback').textContent = "Correct! Proceeding to the next puzzle...";
-                setTimeout(() => {
-                    console.log("Redirecting to puzzle8.html"); // Debugging
-                    window.location.href = 'puzzle8.html';
-                }, 2000);
+            if (correctAnswers.includes(userAnswer)) {
+                window.location.href = "puzzle9.html";
             } else {
-                document.getElementById('feedback').textContent = "Oops! Try again.";
+                document.getElementById("message").innerText = "Try again!";
             }
         }
     </script>
-</head>
-<body>
-    <h1>Puzzle 7</h1>
-    <p>What is the correct answer?</p>
-    <form>
-        <input type="radio" name="answer" value="1 cm"> 1 cm<br>
-        <input type="radio" name="answer" value="2 cm"> 2 cm<br>
-        <input type="radio" name="answer" value="3 cm"> 3 cm<br>
-        <input type="radio" name="answer" value="4 cm"> 4 cm<br>
-        <br>
-        <button type="button" onclick="checkAnswer()">Submit</button>
-    </form>
-    <p id="feedback"></p>
 </body>
 </html>
