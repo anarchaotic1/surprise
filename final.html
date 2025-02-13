@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Valentine's Day!</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 50px;
+      font-weight: bold;
+      text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.8);
+      animation: pop 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    .highlight-box {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    img {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      margin-top: 20px;
+    }
+
+    /* Balloon Animation */
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 70px;
+      background: red;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(1); }
+      100% { transform: translateY(-10vh) scale(1.2); }
+    }
+
+    /* Random Balloon Colors */
+    .balloon:nth-child(odd) { background: #ff4081; }
+    .balloon:nth-child(even) { background: #ff5252; }
+
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Happy Valentine's Day! 🎈</h1>
+  <div class="highlight-box">
+    <img src="https://raw.githubusercontent.com/anarchaotic1/surprise/main/11.png" alt="Valentine Image">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+  <script>
+    function launchConfetti() {
+      confetti({
+        particleCount: 100,
+        spread: 160,
+        origin: { y: 0.6 }
+      });
+    }
+
+    // Confetti on page load
+    window.onload = () => {
+      launchConfetti();
+      setInterval(() => { launchConfetti(); }, 5000); // Burst every 5s
+    };
+
+    // Confetti on click/tap
+    document.body.addEventListener("click", launchConfetti);
+
+    // Generate balloons
+    function createBalloon() {
+      const balloon = document.createElement("div");
+      balloon.className = "balloon";
+      document.body.appendChild(balloon);
+      
+      balloon.style.left = Math.random() * 100 + "vw";
+      balloon.style.animationDuration = (Math.random() * 3 + 3) + "s"; // Random float speed
+
+      setTimeout(() => {
+        balloon.remove();
+      }, 6000); // Remove balloon after floating
+    }
+
+    setInterval(createBalloon, 800); // Generate balloons continuously
+  </script>
+
+</body>
+</html>
